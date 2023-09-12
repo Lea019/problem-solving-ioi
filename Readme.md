@@ -9,9 +9,15 @@
 
 
 ## petite modif
+
+2. Ajouter les modifs à la zone de transit (staging aera)
 1. Créer un commit
-2. Ajouter le commit à la zone de transit
 3. Pousser le commit sur le remote
 
 
 ls: liste les fichiers
+git status: montre le status d'enregistrement
+git diff: montre les changements
+git add . : ajoute les modifs à la zone de transit
+git commit -m "message de commit" :
+git push: 
