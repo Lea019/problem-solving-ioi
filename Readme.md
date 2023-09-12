@@ -8,3 +8,10 @@
 - Copiez ce code dans France-IOI pour l'évaluer
 
 
+## petite modif
+1. Créer un commit
+2. Ajouter le commit à la zone de transit
+3. Pousser le commit sur le remote
+
+
+ls: liste les fichiers
