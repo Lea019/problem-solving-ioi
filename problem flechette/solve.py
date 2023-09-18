@@ -40,10 +40,16 @@ def parse_input():
     return Problem()
 
 def solve(problem):
-    result = []
-    
-    return result
-        
+    data = {}
+    nb_lettre = int(input())
+    alph = list(string.ascii_lowercase)
+    cible = [["a"]*(2*nb_lettre-1)]
+
+    data["nb_lettre"] = nb_lettre
+    data["alph"] = alph
+    data["cibles"] = []
+    cibles.append(cible)
+
     
     
 def output(result):

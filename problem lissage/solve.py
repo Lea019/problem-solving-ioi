@@ -1,3 +1,4 @@
+
 '''
 
 Template for France-IOI programming tasks with debugger in gitpod
@@ -23,44 +24,50 @@ if platform.python_version_tuple()[:2] == ('3', '11'):
 
 
 
-from collections import namedtuple
-import string 
-Problem = namedtuple('Problem', [])
+
 
     
 
 
 def parse_input():
-    data = {}
-    nb_lettre = int(input())
-    alph = list(string.ascii_lowercase)
-    cible = [["a"]*(2*nb_lettre-1)]
+    nb_mesures  = int(input())
+    diff_max = float(input())
+    Problem = {
+        'nb_mesures': nb_mesures,
+        'diff_max': diff_max,
+        'nb_lissage': 0,
+        'liste': [],
+    }
+    for i in range(Problem['nb_mesures']):
+        Problem['liste'].append(float(input()))
+    return Problem
 
-    data["nb_lettre"] = nb_lettre
-    data["alph"] = alph
-    data["cibles"] = []
-    cibles.append(cible)
+def solve(Problem):
+    for i in range(Problem['nb_mesures'] - 1):
+        if abs(Problem['liste'][i] - Problem['liste'][i + 1]) <= Problem['diff_max']:
+            Problem['nb_lissage'] -= 1
+            return Problem['nb_lissage']
+       
+    lissage(Problem)
 
 
-
-
-    return 
-
-def solve(problem):
-    result = []
-    
-    return result
-        
     
     
 def output(result):
-    for r in result:
-        print(r)
+    print(result)
     
-            
+def lissage(problem):
+    result = []
+    result.append(Problem['liste'][0])
+    for i in range(Problem['nb_mesures'] - 2):
+        result.append((Problem['liste'][i] + Problem['liste'][i + 2]) / 2)
+    result.append(Problem['liste'][-1])
+    Problem['liste'] = result
+    Problem['nb_lissage'] += 1
+    return Problem         
 
 
-if __name__ == '__main__':
-    problem = parse_input()
-    result = solve(problem)
-    output(result)
+
+problem = parse_input()
+result = solve(problem)
+output(result)
