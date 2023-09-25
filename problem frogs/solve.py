@@ -34,16 +34,25 @@ if not(1 <= nb_frog <= 100) or \
     quit()
     
 
-prems_frog = [0]*(nb_frog + 1)
-avancee = [0]*(nb_frog + 1)
+prems_frog = [0]*nb_frog
+avancee = [0]*nb_frog
+
+def first_frog(avancee):
+    premiere = max(avancee)
+    i = avancee.count(premiere)
+    if i == 1:
+       return avancee.index(premiere)
+    else: 
+       return 0
 
 for i in range(nb_tour):
-    first = avancee.index(max(avancee))
-    prems_frog[first] += 1
+    first = first_frog(avancee)
+    if first != 0:
+       prems_frog[first] += 1
     frog, depl = [int(x) for x in input().split(" ")]
     if not(1 <= depl <= 100):
         quit()
-    avancee[frog] += depl
+    avancee[frog - 1] += depl
     
-print(prems_frog.index(max(prems_frog)))
+print(prems_frog.index(max(prems_frog)) + 1)
 
