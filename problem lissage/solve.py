@@ -32,39 +32,45 @@ if platform.python_version_tuple()[:2] == ('3', '11'):
 def parse_input():
     nb_mesures  = int(input())
     diff_max = float(input())
-    Problem = {
+    problem = {
         'nb_mesures': nb_mesures,
         'diff_max': diff_max,
         'nb_lissage': 0,
         'liste': [],
     }
-    for i in range(Problem['nb_mesures']):
-        Problem['liste'].append(float(input()))
-    return Problem
+    for i in range(problem['nb_mesures']):
+        problem['liste'].append(float(input()))
+    return problem
 
-def solve(Problem):
-    for i in range(Problem['nb_mesures'] - 1):
-        if abs(Problem['liste'][i] - Problem['liste'][i + 1]) <= Problem['diff_max']:
-            Problem['nb_lissage'] -= 1
-            return Problem['nb_lissage']
-       
-    lissage(Problem)
+def solve(problem):
+    liste = problem['liste']
+    diff = check(liste)
+    while diff > problem['diff_max']:
+        liste = lissage(liste)
+        problem['nb_lissage'] += 1
+        diff = check(liste)
+    return problem['nb_lissage']
 
-
+def check(liste):
+    diff_max = 0
+    for i in range(len(liste) - 1):
+        diff = abs(liste[i] - liste[i + 1]) 
+        if diff > diff_max:
+            diff_max = diff
+    return diff_max
+            
     
     
 def output(result):
     print(result)
     
-def lissage(problem):
+def lissage(liste):
     result = []
-    result.append(Problem['liste'][0])
-    for i in range(Problem['nb_mesures'] - 2):
-        result.append((Problem['liste'][i] + Problem['liste'][i + 2]) / 2)
-    result.append(Problem['liste'][-1])
-    Problem['liste'] = result
-    Problem['nb_lissage'] += 1
-    return Problem         
+    result.append(liste[0])
+    for i in range(len(liste) - 2):
+        result.append((liste[i] + liste[i + 2]) / 2)
+    result.append(liste[-1])
+    return result         
 
 
 
