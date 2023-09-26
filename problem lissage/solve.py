@@ -61,9 +61,7 @@ def check(liste):
             
     
     
-def output(result):
-    print(result)
-    
+
 def lissage(liste):
     result = []
     result.append(liste[0])
@@ -71,7 +69,10 @@ def lissage(liste):
         result.append((liste[i] + liste[i + 2]) / 2)
     result.append(liste[-1])
     return result         
-
+    
+def output(result):
+    print(result)
+    
 
 
 problem = parse_input()
